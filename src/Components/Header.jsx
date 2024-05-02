@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import navIcon from "../assets/navIcon.png";
 import { IoSearchOutline } from "react-icons/io5";
-import { IoIosSettings } from "react-icons/io";
+import { IoIosSettings, IoMdClose } from "react-icons/io";
 import { FiSearch } from "react-icons/fi";
 const Header = () => {
   const [search, setSearch] = useState(false);
@@ -61,7 +61,7 @@ const Header = () => {
             >
               <FiSearch></FiSearch>
             </button>
-            <button className="bg-[#34AB82]  text-white rounded-lg p-2">
+            <button onClick={()=>setSetting(!setting)} className="bg-[#34AB82]  text-white rounded-lg p-2">
               <IoIosSettings />
             </button>
           </div>
@@ -125,6 +125,29 @@ const Header = () => {
          <button className="text-white rounded-lg p-2 bg-[#34AB82] w-full">সার্চ করুন</button>
       </div>
       </div>
+      {/* setting */}
+      {/* <div className={`${setting ? 'fixed duration-700 z-50 p-5 block' : 'hidden duration-1000 z-40 p-5'}  bg-slate-400 rounded-xl`}
+                style={{ width: setting ? '100%' : '100%' }}
+            > */}
+     <div className={`md:flex md:mx-auto absolute md:fixed z-50 -mt-20  duration-1000 w-full h-full
+         ${setting? "right-0": "right-[-100%]"}
+         bg-slate-200 px-6 shadow-lg`}>
+         <div className="flex justify-between items-center">
+          <h2 className="mt-4  text-left py-4">সেটিংস</h2>
+          <p className="text-2xl text-[#868585]" onClick={() => setSetting(!setting)}><IoMdClose /></p>
+         </div>
+          
+         <div className="">
+          <h2 className="mt-4  text-left py-4">আরবি ফন্ট সিলেক্ট করুন</h2>
+          <select className="bg-[#ECEEF0] rounded-lg w-full h-12 px-4">
+            <option value="option2">KFGQ</option>
+            <option value="option3">KFGQ</option>
+            <option value="option4">Al Mushaf</option>
+            <option value="option5">Amiri</option>
+     
+          </select>
+        </div>
+     </div>
     </div>
   );
 };
